@@ -5,7 +5,7 @@
   "description": "A practice exercise to build an API that notifies cardholders of unusually high spending",
   "main": "index.js",
   "scripts": {
-    "test": "teenytest"
+    "test": "nyc mocha -r ts-node/register test/**/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,32 @@
   },
   "homepage": "https://github.com/testdouble/unusual-spending-kata#readme",
   "devDependencies": {
-    "teenytest": "^1.0.0",
-    "testdouble": "^0.8.0"
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0",
+    "testdouble": "^3.16.0",
+    "ts-node": "^8.10.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "typescript": "^3.9.5"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  }
 }
